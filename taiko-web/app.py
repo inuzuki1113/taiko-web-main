@@ -774,10 +774,11 @@ def send_manifest():
 
 if __name__ == '__main__':
     import argparse
+    import os
 
     parser = argparse.ArgumentParser(description='Run the taiko-web development server.')
-    parser.add_argument('port', type=int, metavar='PORT', nargs='?', default=34801, help='Port to listen on.')
-    parser.add_argument('-b', '--bind-address', default='localhost', help='Bind server to address.')
+    parser.add_argument('port', type=int, metavar='PORT', nargs='?', default=int(os.environ.get("PORT", 5000)), help='Port to listen on.')
+    parser.add_argument('-b', '--bind-address', default='0.0.0.0', help='Bind server to address.')
     parser.add_argument('-d', '--debug', action='store_true', help='Enable debug mode.')
     args = parser.parse_args()
 
